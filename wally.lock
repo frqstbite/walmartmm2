@@ -15,7 +15,7 @@ dependencies = []
 [[package]]
 name = "frqstbite/walmartmm2"
 version = "0.1.0"
-dependencies = [["Fusion", "elttob/fusion@0.2.0"], ["Knit", "sleitnick/knit@1.5.1"]]
+dependencies = [["Fusion", "elttob/fusion@0.2.0"], ["Knit", "sleitnick/knit@1.5.1"], ["Promise", "evaera/promise@4.0.0"], ["Signal", "sleitnick/signal@1.5.0"], ["TableUtil", "sleitnick/table-util@1.2.0"], ["Trove", "sleitnick/trove@1.0.0"]]
 
 [[package]]
 name = "sleitnick/comm"
@@ -35,4 +35,14 @@ dependencies = []
 [[package]]
 name = "sleitnick/signal"
 version = "1.5.0"
+dependencies = []
+
+[[package]]
+name = "sleitnick/table-util"
+version = "1.2.0"
+dependencies = []
+
+[[package]]
+name = "sleitnick/trove"
+version = "1.0.0"
 dependencies = []

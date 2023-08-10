@@ -7,3 +7,7 @@ realm = "shared"
 [dependencies]
 Fusion = "elttob/fusion@0.2.0"
 Knit = "sleitnick/knit@^1.5"
+Promise = "evaera/promise@^4"
+Signal = "sleitnick/signal@1.5.0"
+TableUtil = "sleitnick/table-util@^1"
+Trove = "sleitnick/trove@^1"

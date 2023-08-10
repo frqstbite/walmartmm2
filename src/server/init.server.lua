@@ -1,9 +1,5 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
-
-local packages = ReplicatedStorage.Packages
-local Knit = require(packages.Knit)
+local Knit = require(game:GetService("ReplicatedStorage").Packages.Knit)
 
 -- Initialization
-Knit.AddServicesDeep(script.services)
+Knit.AddServices(script.services)
 Knit.Start():catch(warn)
