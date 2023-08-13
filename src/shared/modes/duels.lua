@@ -8,6 +8,7 @@ local ROLE_KNIFEWIELDER = "knifewielder"
 return {
     name = "Duels",
     description = "One gun, one blade. Last player standing wins.",
+    maps = { "testmap" },
     color = Color3.fromRGB(252, 89, 100),
 
     roles = {

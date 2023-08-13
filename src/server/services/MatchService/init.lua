@@ -15,8 +15,12 @@ end
 local function teleportPlayersRandomly(ctx, map)
     local spawns = map:FindFirstChild("spawns")
     assert(spawns, `Mode {ctx.mode.id} and map {map.Name} are missing teleportation implementations!`)
+    spawns = spawns:GetChildren()
 
-
+    for _, participant in ipairs(ctx.participants) do
+        local character = ctx:GetCharacter(participant)
+        character:PivotTo(TableUtil.Sample(spawns, 1)[1].CFrame)
+    end
 end
 
 local MatchService = Knit.CreateService {
@@ -29,10 +33,16 @@ function MatchService:KnitInit()
 end
 
 function MatchService:KnitStart()
+    local debug = true
+
     while true do
-        local success, err = pcall(self.Loop, self)
-        if not success then
-            warn(`Match ended with error: {err}`)
+        if debug then
+            self:Loop()
+        else
+            local success, err = pcall(self.Loop, self)
+            if not success then
+                warn(`Match ended with error: {err}`)
+            end
         end
     end
 end
@@ -47,7 +57,7 @@ function MatchService:Loop()
     task.wait(15)
 
     -- select random mode
-    local modeId = TableUtil.Sample(TableUtil.Keys(modes), 1)
+    local modeId = TableUtil.Sample(TableUtil.Keys(modes), 1)[1]
     local mode = modes[modeId]
     print("Mode: " .. modeId)
 
@@ -59,7 +69,7 @@ function MatchService:Loop()
     print("Map voting: " .. table.concat(choices, ", "))
     task.wait(20)
 
-    local map = TableUtil.Sample(choices, 1)
+    local map = TableUtil.Sample(choices, 1)[1]
     print("Map chosen! " .. map)
 
     -- 5 second delay while map info is shown
@@ -73,7 +83,7 @@ function MatchService:Loop()
         print(`{short} player(s) short! Waiting for more...`)
         task.wait(30)
 
-        if not playersRequired(mode) then
+        if not playersRequired(modeId) then
             print("Not enough players to start! Vote discarded.")
             return --restart match loop, discarding vote results
         end

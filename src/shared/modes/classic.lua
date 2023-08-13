@@ -12,6 +12,7 @@ local ROLE_MURDERER = "murderer"
 return {
     name = "Classic",
     description = "One among you is a murderer. Be careful who you turn your back to.",
+    maps = { "testmap" },
     defaultWinner = TEAM_INNOCENT,
 
     teams = {

@@ -5,6 +5,7 @@ for _, child in ipairs(script:GetChildren()) do
 
     -- Mode setup
     local mode = require(child)
+    assert(mode.maps, "Mode " .. modeId .. " is missing a maps declaration")
     mode.id = modeId
     mode.ffa = mode.teams == nil
     
